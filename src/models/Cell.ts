@@ -21,10 +21,42 @@ export class Cell {
       this.id = Math.random();
    }
 
+   isEmpty() { //  перевіряємо є у комірці фігура чи ні
+      return this.figure === null;
+   }
+
+   isEmptyVertical(target: Cell): boolean{ //Перевірка на пусту вертікаль, загальний метод для руху фігур
+      if(this.x !== target.x) {
+         return false;
+      }
+
+      const min = Math.min(this.y, target.y);
+      const max = Math.max(this.y, target.y);
+      for (let y = min + 1; y < max; y++) {
+         if(!this.board.getCell(this.x, y).isEmpty()) {
+            return false
+         }   
+      }
+      return true;
+   }
+
+   isEmptyHorizontal(target: Cell): boolean{ //Перевірка на пусту горізонталь, загальний метод для руху фігур
+      return true   
+   }
+
+   isEmptyDiagonal(target: Cell): boolean{ //Перевірка на пусту діагональ, загальний метод для руху фігур
+      return true
+   }
+
+   setFigure(figure: Figure) { // цей метод пишемо для методу moveFigure через кільцеву залежність Cell та Figure
+      this.figure = figure;
+      this.figure.cell = this;
+   }
+
    moveFigure(target: Cell) {
       if(this.figure && this.figure?.canMove(target)) {
          this.figure.moveFigure(target)
-         target.figure = this.figure;
+         target.setFigure(this.figure);
          this.figure = null;
       }
    }
