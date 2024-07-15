@@ -29,7 +29,12 @@ export class Figure {
    }
 
    canMove(target: Cell) : boolean {
+      if(target.figure?.color === this.color) //не можливо їсти свого коліру фігури
+         return false
+      if(target.figure?.name === FigureNames.KING) //не можливо вбити короля
+         return false
       return true;
    }
+
    moveFigure(target: Cell) {}
 }
