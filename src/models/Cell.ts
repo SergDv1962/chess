@@ -21,8 +21,15 @@ export class Cell {
       this.id = Math.random();
    }
 
-   isEmpty() { //  перевіряємо є у комірці фігура чи ні
+   isEmpty(): boolean { //  перевіряємо є у комірці фігура чи ні
       return this.figure === null;
+   }
+      //перевіряемо ворог чи ні
+   isEnemy(target: Cell): boolean {
+      if (target.figure) {
+         return this.figure?.color !== target.figure.color;
+      }
+      return false
    }
 
    isEmptyVertical(target: Cell): boolean{ //Перевірка на пусту вертікаль, загальний метод для руху фігур
