@@ -24,7 +24,7 @@ export class Cell {
    isEmpty(): boolean { //  перевіряємо є у комірці фігура чи ні
       return this.figure === null;
    }
-      //перевіряемо ворог чи ні
+      //перевіряемо ворог чи ні 
    isEnemy(target: Cell): boolean {
       if (target.figure) {
          return this.figure?.color !== target.figure.color;
