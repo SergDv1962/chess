@@ -26,6 +26,7 @@ const BoardComponent: FC<BoardProps> = ({
       selectedCell.figure?.canMove(cell)
     ) {
       selectedCell.moveFigure(cell);
+      swapPlayer()
       setSelectedCell(null);
       updateBoard();
     } else {
