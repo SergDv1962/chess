@@ -4,6 +4,7 @@
 }
 
 .app {
+  padding: 16px;
   width: 100vw;
   height: 100vw;
   display: flex;
@@ -47,4 +48,11 @@
   width: 12px;
   border-radius: 50%;
   background-color: green;
+}
+
+.lost {
+  height: calc(50vh - 60px);
+  padding: 30px;
+  margin-left: 50px;
+  background-color: lightgray;
 }
